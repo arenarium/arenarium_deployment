@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  mongo:
+    image: mongo:3.4
+    volumes:
+      - /data:/data/db
+    ports:
+      - 27017:27017
+
+  battleground:
+    image: battleground/battleground:latest
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_HOST=mongo:27017
+    command: "battleground_start --init"

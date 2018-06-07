@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  mongo:
+    image: mongo:3.4
+    volumes:
+      - /data:/data/db
+    ports:
+      - 27017:27017
+
+  arenarium_api:
+    image: battleground/arenarium_api:latest
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_HOST=mongo:27017
+
+  arenarium_web:
+    image: battleground/arenarium_web:latest
+    depends_on:
+      - arenarium_api
+    ports:
+      - 80:80
+
+  battleground:
+    image: battleground/battleground:latest
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_HOST=mongo:27017
