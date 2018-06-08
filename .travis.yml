@@ -4,7 +4,7 @@ rvm:
 services:
 - docker
 script:
-- scp -i deploy_key docker-compose* $ARENARIUM_USER@$ARENARIUM_HOST:~
+- scp -oStrictHostKeyChecking=no -i deploy_key docker-compose* $ARENARIUM_USER@$ARENARIUM_HOST:~
 - ssh -i deploy_key $ARENARIUM_USER@$ARENARIUM_HOST 'bash -s' < reload.sh
 before_install:
 - openssl aes-256-cbc -K $encrypted_1645300b04d0_key -iv $encrypted_1645300b04d0_iv

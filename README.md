@@ -1,6 +1,6 @@
 
 
-###initial setup on server:
+### initial setup on server:
 
 set environment variables for `KEYPATH`, `ARENARIUM_HOST`, and `ARENARIUM_USER`.
 
