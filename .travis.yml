@@ -1,11 +1,12 @@
 language: ruby
 rvm:
-- 2.0.0
+  - 2.0.0
 services:
-- docker
+  - docker
 script:
-- scp -oStrictHostKeyChecking=no -i deploy_key docker-compose* $ARENARIUM_USER@$ARENARIUM_HOST:~
-- ssh -i deploy_key $ARENARIUM_USER@$ARENARIUM_HOST 'bash -s' < reload.sh
+  - chmod 600 deploy_key
+  - scp -oStrictHostKeyChecking=no -i deploy_key docker-compose* $ARENARIUM_USER@$ARENARIUM_HOST:~
+  - ssh -i deploy_key $ARENARIUM_USER@$ARENARIUM_HOST 'bash -s' < reload.sh
 before_install:
-- openssl aes-256-cbc -K $encrypted_1645300b04d0_key -iv $encrypted_1645300b04d0_iv
-  -in deploy_key.enc -out deploy_key -d
+  - openssl aes-256-cbc -K $encrypted_1645300b04d0_key -iv $encrypted_1645300b04d0_iv
+    -in deploy_key.enc -out deploy_key -d
