@@ -108,3 +108,7 @@ venv.bak/
 
 .vagrant
 *.log
+
+deploy_key
+deploy_key.pub
+set_env.sh
