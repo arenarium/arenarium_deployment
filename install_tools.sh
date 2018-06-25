@@ -6,6 +6,7 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 
 sudo iptables -I DOCKER-USER -i docker0 ! -o docker0 -j DROP
+sudo service iptables save
 
 sudo adduser $ARENARIUM_USER
 sudo usermod -a -G docker $ARENARIUM_USER
