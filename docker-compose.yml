@@ -28,3 +28,5 @@ services:
       - mongo
     environment:
       - MONGO_HOST=mongo:27017
+    cap_drop:
+      - ALL
